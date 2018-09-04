@@ -11,7 +11,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     }
   end
 
-  test "should get index" do
+  test "should get product index" do
     get products_url
     assert_response :success
   end

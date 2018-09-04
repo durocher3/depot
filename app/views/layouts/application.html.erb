@@ -9,7 +9,22 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="<%= controller.controller_name %>">
+    <div id="banner">
+      <%= image_tag 'logo.svg', alt: 'The Pragmatic Bookshelf' %>
+      <span class="title"><%= @page_title %></span>
+    </div>
+    <div id="columns">
+      <div id="side">
+        <ul>
+          <li><%= link_to "Home", store_index_path %></li>
+          <li><%= link_to "News", '#' %></li>
+          <li><%= link_to "Contact", '#' %></li>
+        </ul>
+      </div>
+      <div id="main">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

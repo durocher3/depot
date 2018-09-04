@@ -5,14 +5,20 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-  title: mytitle
+  title: test entry 1
   description: a description
   image_url: /images/1
   price: 1.00
 #
 two:
-  title: NULL
-  description: NULL
-  image_url: NULL
-  price: NULL
+  title: test entry 2
+  description: asdf
+  image_url: /images/2
+  price: 2.00
+
+three:
+  title: test entry 3
+  description: qwerty
+  image_url: /images/3
+  price: 2.50
 
