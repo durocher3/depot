@@ -33,7 +33,8 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.cart }
+        format.html { redirect_to store_index_url }
+        format.js { @current_item = @line_item }
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }
@@ -45,14 +46,12 @@ class LineItemsController < ApplicationController
   # PATCH/PUT /line_items/1
   # PATCH/PUT /line_items/1.json
   def update
+    new_quantity = @line_item[:quantity] - 1
+    @line_item.update(quantity: new_quantity) 
+    @line_item.destroy if @line_item[:quantity] == 0
     respond_to do |format|
-      if @line_item.update(line_item_params)
-        format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
-        format.json { render :show, status: :ok, location: @line_item }
-      else
-        format.html { render :edit }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to store_index_url }
+      format.json { render json: @line_item.errors, status: :unprocessable_entity }
     end
   end
 
