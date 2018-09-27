@@ -6,4 +6,7 @@
     <td class="total_cell"><%= number_to_currency(cart.total_price) %></td>
   </tr>
 </table>
+<% unless params[:controller] == "orders" && params[:action] == "new" %>
+  <%= button_to "Checkout", new_order_path, method: :get %>
+<% end %>
 <%= button_to "Empty Cart", cart, method: :delete, data: { confirm: "Are you sure?" } %>
